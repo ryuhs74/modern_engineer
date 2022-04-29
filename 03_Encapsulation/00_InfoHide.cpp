@@ -38,7 +38,7 @@ public:
 int main()
 {
     Time now(12, 34, 56);
-    now.SetHour(40);
+    now.SetHour(40);    
     now.OutTime();
     now.SetHour(9);
     now.OutTime();
