@@ -1,0 +1,57 @@
+명령어		설명										예시
+git init	repository를 생성/초기화 한다.
+		디렉토리에 '.git' 폴더를 만든다.
+		.git 디렉토리는 저장소에 필요한 skeleton이 들어있다.
+git status	저장소의 상태를 확인하기 위해 사용하는 명령어					git status
+		현재 브랜치의 이름과 추가변경된 파일 및 디렉토리 목록 표시
+		
+git add	파일이나 디렉토리를 인덱스에 추가하는데 사용하는 명령어				git add [file_pattern]
+		신규 파일이나 변경된 파일을 stage에 올리는 일을 한다.		
+
+git commit	인덱스에 추가된 파일이나 폴더의 내용을 저장소에 쓸때 사용하는 명령어		git commit -m "first commit"(only message) / git commit -am "..."(stage and message)
+		* git commit 옵션 "인덱스"	
+
+git diff	변경된 파일을 비교								git diff file-name
+
+git branch	브랜치에 대해 다양한 작업을 수행하기 위해 사용하는 명령어				git branch -M main
+		* git branch -M [브랜치명] : 브랜치 만들기
+		* git branch : 브랜치 목록보기
+		* git branch -d [브랜치명] : 지정한 브랜치를 삭제	
+		* git clone -b 'branch명' 'remote_repo 주소' //특정 branch를 clone
+
+git checkout	로컬 저장소의 브랜치를 전환할 때 사용하는 명령어					git checkout main 
+		* git checkout [브랜치명] 	
+
+git log	로컬 저장소의 커밋 히스토리를 탐색하는데 사용하는 명령				git log -n 10 / git log -p / git log --oneline
+		-n옵션으로 내역보기 수를 지정할 수 있습니다. 	
+
+git show --oneline 로그를 한줄로 간단하게 보여준다. commit id가 축약되어 나오기 때문에 commit id를 복사하기 좋다.
+
+git grep	저장소의 파일 내용에서 검색하고나 할 때 사용하는 명령어				git grep "Hello"
+		* git grep "검색 단어"	
+
+git clone	기존 원격 저장소의 파일들을 로컬저장소에 다운로드하기 위하여 사용하는 명령어	git clone http://github.com/alvarotrigo/fullPage.js.git
+		* git clone [url]	
+
+git remote	원격 저장소를 조작하는데 사용하는 명령어
+		* git remote : 원격 저장소의 이름목록 표시
+		* git remote -v : 원격 저장소에 대한 자세한 목록 보기
+		* git remote add [원격저장소이름] [url] : 원격 저장소를 추가
+		* git remote rm [원격저장소이름] : 원격저장소 제거	 
+
+git reset	로컬 저장소의 커밋을 취소하기 위해 사용하는 명령어					git reset -soft HEAD ^
+		잘못 커밋하거나 수정이 누락되어 있을 때 자주 사용					git reset --hard : 마지막 버전 변경 사항이 삭제
+		되돌린 이후 버전 삭제, 로그에서 조차도 나오지 않음				git reset 'git id' --hard : git id까지 초기화
+												
+git revert 	되돌리기, revert는 reset처럼 한번에 갈 수 없고 					git revert 'git id'
+		revert 시키고 싶은 곳 까지 위에서부터 순차적으로 가야 한다.
+		되돌린 이후 버전은 유지, checkout으로 돌아 갈 수 있다. 
+		기존 버전은 남겨두고 되돌리기 상태로 새로운 버전을 추가한다.
+		
+git merge	현재 브랜치에서 다른 지점에서 변경사항을 병합하는데 사용하는 명령어			git checkout master git merge bugfix
+		다음 예시는 bugfix를 master 브랜치에 병합하는 내용	
+		* git checkout '병합할 branch로 전환'
+		* git merge '병합 될 branch 명'
+
+git pull	원격 브랜치의 변경사항을 캡처하기 위해 사용하는 명령어
+		다음 예신느 로컬 저장소의 master브랜치에 원격 저장소 origin의 master브랜치를 가져옴	git checkout matser git pull origin master
